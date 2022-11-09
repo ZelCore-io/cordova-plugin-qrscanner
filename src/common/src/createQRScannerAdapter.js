@@ -38,18 +38,13 @@ function convertStatus(statusDictionary) {
 // Reset body style attribute and clear pending timeouts for omit unexpected style changes.
 function resetBodyStyles() {
   setTimeout(function() {
-    backgroundTransparent = false;
-    for (var backgroundTimeout of backgroundTimeouts) {
-      if (backgroundTimeout) {
-        clearTimeout(backgroundTimeout);
-      }
-    }
-    for (var key of Object.keys(document.body.style)) {
-      document.body.style[key] = initialStyles[key] ? initialStyles[key] : '';
-    }
-    for (var keyB of Object.keys(document.documentElement.style)) {
-      document.documentElement.style[keyB] = initialStylesHTML[keyB] ? initialStylesHTML[keyB] : '';
-    }
+    var body = document.body;
+    body.style.backgroundColor = '';
+    body.style.backgroundImage = '';
+    body.parentNode.style.backgroundColor = '';
+    body.parentNode.style.backgroundImage = '';
+  }, 50);
+  setTimeout(function() {
     var body = document.body;
     body.style.backgroundColor = '';
     body.style.backgroundImage = '';
@@ -57,24 +52,19 @@ function resetBodyStyles() {
     body.parentNode.style.backgroundImage = '';
   }, 100);
   setTimeout(function() {
-    backgroundTransparent = false;
-    for (var backgroundTimeout of backgroundTimeouts) {
-      if (backgroundTimeout) {
-        clearTimeout(backgroundTimeout);
-      }
-    }
-    for (var key of Object.keys(document.body.style)) {
-      document.body.style[key] = initialStyles[key] ? initialStyles[key] : '';
-    }
-    for (var keyB of Object.keys(document.documentElement.style)) {
-      document.documentElement.style[keyB] = initialStylesHTML[keyB] ? initialStylesHTML[keyB] : '';
-    }
     var body = document.body;
     body.style.backgroundColor = '';
     body.style.backgroundImage = '';
     body.parentNode.style.backgroundColor = '';
     body.parentNode.style.backgroundImage = '';
-  }, 500);
+  }, 150);
+  setTimeout(function() {
+    var body = document.body;
+    body.style.backgroundColor = '';
+    body.style.backgroundImage = '';
+    body.parentNode.style.backgroundColor = '';
+    body.parentNode.style.backgroundImage = '';
+  }, 200);
   setTimeout(function() {
     backgroundTransparent = false;
     for (var backgroundTimeout of backgroundTimeouts) {
@@ -93,7 +83,7 @@ function resetBodyStyles() {
     body.style.backgroundImage = '';
     body.parentNode.style.backgroundColor = '';
     body.parentNode.style.backgroundImage = '';
-  }, 1500);
+  }, 250);
 }
 
 // Simple utility method to ensure the background is transparent. Used by the
