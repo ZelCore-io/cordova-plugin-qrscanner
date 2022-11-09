@@ -50,6 +50,11 @@ function resetBodyStyles() {
     for (var keyB of Object.keys(document.documentElement.style)) {
       document.documentElement.style[keyB] = initialStylesHTML[keyB] ? initialStylesHTML[keyB] : '';
     }
+    var body = document.body;
+    body.style.backgroundColor = '';
+    body.style.backgroundImage = '';
+    body.parentNode.style.backgroundColor = '';
+    body.parentNode.style.backgroundImage = '';
   }, 100);
 }
 
@@ -184,7 +189,7 @@ return {
     cordova.exec(successCallback(callback), errorCallback(callback), 'QRScanner', 'prepare', []);
   },
   destroy: function(callback) {
-    cordova.exec(doneCallback(callback), null, 'QRScanner', 'destroy', []);
+    cordova.exec(doneCallback(callback, true), null, 'QRScanner', 'destroy', []);
     resetBodyStyles();
   },
   scan: function(callback) {
@@ -204,7 +209,7 @@ return {
     cordova.exec(doneCallback(callback, true), null, 'QRScanner', 'show', []);
   },
   hide: function(callback) {
-    cordova.exec(doneCallback(callback), null, 'QRScanner', 'hide', []);
+    cordova.exec(doneCallback(callback, true), null, 'QRScanner', 'hide', []);
   },
   pausePreview: function(callback) {
     cordova.exec(doneCallback(callback), null, 'QRScanner', 'pausePreview', []);
