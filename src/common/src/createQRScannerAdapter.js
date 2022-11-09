@@ -47,8 +47,8 @@ function resetBodyStyles() {
     for (var key of Object.keys(document.body.style)) {
       document.body.style[key] = initialStyles[key] ? initialStyles[key] : '';
     }
-    for (var key of Object.keys(document.documentElement.style)) {
-      document.documentElement.style[key] = initialStylesHTML[key] ? initialStylesHTML[key] : '';
+    for (var keyB of Object.keys(document.documentElement.style)) {
+      document.documentElement.style[keyB] = initialStylesHTML[keyB] ? initialStylesHTML[keyB] : '';
     }
   }, 100);
 }
